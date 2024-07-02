@@ -1,35 +1,37 @@
-// utils/web3.js
-
 import Web3 from 'web3';
 import simpleMarketplaceArtifact from '../../ignition/deployments/chain-31337/artifacts/SimpleMarketplaceModule#SimpleMarketplace.json';
 
 let web3;
 let simpleMarketplaceContract;
 
-const getContractAddress = async () => {
-  // Contract address is directly available in the artifact
-  return simpleMarketplaceArtifact.address;
-};
+// Postavite statičku adresu ugovora
+const contractAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
+const contractABI = simpleMarketplaceArtifact.abi;
 
 if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {
-  // We are in the browser and MetaMask is running.
+  // Nalazimo se u pregledniku i MetaMask je pokrenut.
   web3 = new Web3(window.ethereum);
-  // Request access to the user's MetaMask account.
+  // Zatražite pristup korisnikovom MetaMask računu.
   window.ethereum.request({ method: 'eth_requestAccounts' }).then(() => {
-    getContractAddress().then(contractAddress => {
-      simpleMarketplaceContract = new web3.eth.Contract(simpleMarketplaceArtifact.abi, contractAddress);
-      console.log(`Contract instance created: ${contractAddress}`);
-    });
+    simpleMarketplaceContract = new web3.eth.Contract(contractABI, contractAddress);
+    console.log(`Contract instance created: ${contractAddress}`);
+
+    // Dohvatite broj stavki kao provjeru
+    simpleMarketplaceContract.methods.itemCount().call().then(itemCount => {
+      console.log(`Item Count from contract: ${itemCount}`);
+    }).catch(err => console.error('Error fetching item count:', err));
   }).catch(err => console.error(err));
 } else {
-  // We are on the server *OR* the user is not running MetaMask
+  // Nalazimo se na poslužitelju *ILI* korisnik ne koristi MetaMask
   const provider = new Web3.providers.HttpProvider('http://127.0.0.1:8545'); // Hardhat
   web3 = new Web3(provider);
+  simpleMarketplaceContract = new web3.eth.Contract(contractABI, contractAddress);
+  console.log(`Contract instance created: ${contractAddress}`);
 
-  getContractAddress().then(contractAddress => {
-    simpleMarketplaceContract = new web3.eth.Contract(simpleMarketplaceArtifact.abi, contractAddress);
-    console.log(`Contract instance created: ${contractAddress}`);
-  });
+  // Dohvatite broj stavki kao provjeru
+  simpleMarketplaceContract.methods.itemCount().call().then(itemCount => {
+    console.log(`Item Count from contract: ${itemCount}`);
+  }).catch(err => console.error('Error fetching item count:', err));
 }
 
 export { web3, simpleMarketplaceContract };
