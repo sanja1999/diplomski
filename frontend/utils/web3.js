@@ -5,7 +5,7 @@ let web3;
 let simpleMarketplaceContract;
 
 // Postavite statičku adresu ugovora
-const contractAddress = '0xdc64a140aa3e981100a9beca4e685f962f0cf6c9';
+const contractAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3';
 const contractABI = simpleMarketplaceArtifact.abi;
 
 if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {

@@ -22,7 +22,7 @@ contract SimpleMarketplace {
         listItem(925927, 9 ether);    // Dyson V11
         listItem(847859, 8 ether);    // HP Spectre x360
         listItem(848148, 4 ether);    // Philips Hue
-        listItem(848633, 9 ether);    // Nest Thermostat
+        listItem(848633, 900000 ether);    // Nest Thermostat
     }
 
     function listItem(uint id, uint price) public {

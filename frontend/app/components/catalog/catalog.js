@@ -16,9 +16,21 @@ export default function Catalog({ items }) {
         console.log("handle", itemId, price);
 
         try {
+            // Convert price to Wei
+            const priceInWei = web3.utils.toWei(price.toString(), 'ether');
+
+            // Get account balance
+            const balanceInWei = await web3.eth.getBalance(account);
+
+            // Check if the account has enough balance
+            if (parseInt(balanceInWei) < parseInt(priceInWei)) {
+                alert('Insufficient balance to complete the purchase.');
+                return;
+            }
+
             const receipt = await simpleMarketplaceContract.methods.purchaseItem(itemId).send({
                 from: account,
-                value: web3.utils.toWei(price.toString(), 'ether')
+                value: priceInWei
             });
             console.log(receipt);
         } catch (error) {
