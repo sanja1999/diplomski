@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@components/*": ["./app/components/*"],
+      "@pages/*": ["./pages/*"],    // Promijenjeno sa "./app/*" na "./pages/*"
+      "@styles/*": ["./styles/*"],
+      "@utils/*": ["./app/utils/*"]
+    }
+  }
+}

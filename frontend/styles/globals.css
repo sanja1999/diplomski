@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components {
+    .fit {
+      min-height: calc(100vh - 88px);
+    }
+  }
+
+  
+  /* styles/globals.css */
+
+.clip-path-custom {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
