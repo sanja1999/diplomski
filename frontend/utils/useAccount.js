@@ -6,6 +6,7 @@ export const useAccount = () => {
     const [account, setAccount] = useState('');
     const [balance, setBalance] = useState('');
     const [network, setNetwork] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // New state for login status
     const router = useRouter();
 
     const getNetworkName = (networkId) => {
@@ -27,20 +28,25 @@ export const useAccount = () => {
         try {
             if (typeof window.ethereum !== 'undefined') {
                 const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                setAccount(accounts[0]);
-                const balance = await web3.eth.getBalance(accounts[0]);
-                setBalance(web3.utils.fromWei(balance, 'ether'));
-                const networkId = await web3.eth.net.getId();
-                setNetwork(getNetworkName(Number(networkId)));
+                if (accounts.length > 0) {
+                    setAccount(accounts[0]);
+                    setIsLoggedIn(true); // User is logged in
+                    const balance = await web3.eth.getBalance(accounts[0]);
+                    setBalance(web3.utils.fromWei(balance, 'ether'));
+                    const networkId = await web3.eth.net.getId();
+                    setNetwork(getNetworkName(Number(networkId)));
+                }
             } else {
                 const accounts = await web3.eth.getAccounts();
                 if (accounts.length > 0) {
                     setAccount(accounts[0]);
+                    setIsLoggedIn(true); // User is logged in
                     const balance = await web3.eth.getBalance(accounts[0]);
                     setBalance(web3.utils.fromWei(balance, 'ether'));
                     const networkId = await web3.eth.net.getId();
                     setNetwork(getNetworkName(Number(networkId)));
                 } else {
+                    setIsLoggedIn(false); // User is not logged in
                     router.push('/');
                 }
             }
@@ -54,5 +60,5 @@ export const useAccount = () => {
         getAccountDetails();
     }, [router]);
 
-    return { account, setAccount, balance, network, setNetwork, getAccountDetails };
+    return { account, balance, network, isLoggedIn, getAccountDetails };
 };

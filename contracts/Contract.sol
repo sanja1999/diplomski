@@ -6,7 +6,6 @@ contract SimpleMarketplace {
         uint id;
         uint price;
         address seller;
-        address buyer;
     }
 
     mapping(uint => Item) public items;
@@ -15,29 +14,30 @@ contract SimpleMarketplace {
     event ItemPurchased(uint indexed id, address indexed buyer, uint256 price);
 
     constructor() {
-        // Initial items for demonstration purposes
-        listItem(1 ether);
-        listItem(2 ether);
-        listItem(3 ether);
+        // Hardcoded items from items.json
+        listItem(1, 2 ether);         // Dell XPS 13
+        listItem(2, 4 ether);         // Samsung Galaxy S25
+        listItem(3, 7 ether);         // Apple MacBook Pro 16
+        listItem(4, 5 ether);         // Google Pixel 6
+        listItem(925927, 9 ether);    // Dyson V11
+        listItem(847859, 8 ether);    // HP Spectre x360
+        listItem(848148, 4 ether);    // Philips Hue
+        listItem(848633, 9 ether);    // Nest Thermostat
     }
 
-    function listItem(uint price) public {
-        itemCount++;
-        items[itemCount] = Item({
-            id: itemCount,
+    function listItem(uint id, uint price) public {
+        items[id] = Item({
+            id: id,
             price: price,
-            seller: msg.sender,
-            buyer: address(0)
+            seller: msg.sender
         });
+        itemCount++;
     }
 
     function purchaseItem(uint itemId) external payable {
         Item storage item = items[itemId];
         require(item.seller != address(0), "Item does not exist");
         require(item.price == msg.value, "Incorrect price sent");
-        require(item.buyer == address(0), "Item already sold");
-
-        item.buyer = msg.sender;
 
         // Transfer funds to the seller
         (bool success, ) = item.seller.call{value: msg.value}("");

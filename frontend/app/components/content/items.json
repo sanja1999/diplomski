@@ -14,7 +14,7 @@
             "Enhanced security features"
         ],
         "createdAt": "",
-         "price": "4"
+         "price": "2"
     },
     {
         "id": "2",
@@ -48,7 +48,7 @@
             "Powerful M1 Pro or M1 Max chip"
         ],
         "createdAt": "",
-         "price": "4"
+         "price": "7"
     },
     {
         "id": "4",
@@ -65,7 +65,7 @@
             "Google Tensor chip for smart performance"
         ],
         "createdAt": "",
-         "price": "4"
+         "price": "5"
     },
     {
         "id": "925927",
@@ -82,7 +82,7 @@
             "Powerful suction for deep cleaning"
         ],
         "createdAt": "",
-         "price": "4"
+         "price": "9"
     },
     
     {
@@ -100,7 +100,7 @@
             "2-in-1 design for versatility"
         ],
         "createdAt": "",
-         "price": "4"
+         "price": "8"
     },
     {
         "id": "848148",
@@ -134,7 +134,7 @@
             "Smart temperature control"
         ],
         "createdAt": "",
-         "price": "4"
+         "price": "9"
 
     }
 ]

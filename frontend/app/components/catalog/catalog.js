@@ -1,16 +1,29 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { web3, simpleMarketplaceContract } from '../../../utils/web3';
+import { useAccount } from '../../../utils/useAccount';
+
 
 export default function Catalog({ items }) {
+    const { account, isLoggedIn } = useAccount(); // Use the hook to get account and login status
 
-    const handlePurchase = async(itemId, price) => {
+    const handlePurchase = async (itemId, price) => {
+        if (!isLoggedIn) {
+            alert('You are not logged in. Please log in to MetaMask.');
+            return;
+        }
+
         console.log("handle", itemId, price);
 
-        simpleMarketplaceContract.methods.purchaseItem(itemId).send({from: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266', value: 2000000000000000000})
-        .then(function(receipt){
+        try {
+            const receipt = await simpleMarketplaceContract.methods.purchaseItem(itemId).send({
+                from: account,
+                value: web3.utils.toWei(price.toString(), 'ether')
+            });
             console.log(receipt);
-        });
+        } catch (error) {
+            console.error("Error purchasing item:", error);
+        }
     };
 
     return (
