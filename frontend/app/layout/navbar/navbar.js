@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { web3 } from '../../../utils/web3';
+import React from 'react';
 import Link from 'next/link';
+import { useAccount } from '../../../utils/useAccount';
 
 export default function NavBar() {
-    const [account, setAccount] = useState('');
-    const [network, setNetwork] = useState('');
+    const { account, setAccount, network, setNetwork, getAccountDetails } = useAccount();
 
     const checkMetaMask = () => {
         if (typeof window.ethereum !== 'undefined') {
@@ -18,45 +17,13 @@ export default function NavBar() {
     const connectMetaMask = async () => {
         if (checkMetaMask()) {
             try {
-                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                setAccount(accounts[0]);
-                const networkId = await web3.eth.net.getId();
-                setNetwork(getNetworkName(networkId));
-                console.log('Connected to network:', getNetworkName(networkId));
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+                getAccountDetails(); // Update account details after connecting
             } catch (error) {
                 console.error('Error connecting to MetaMask:', error);
             }
         }
     };
-
-    const getNetworkName = (networkId) => {
-        switch (networkId) {
-            case 1: return 'Ethereum Mainnet';
-            case 3: return 'Ropsten Testnet';
-            case 4: return 'Rinkeby Testnet';
-            case 5: return 'Goerli Testnet';
-            case 42: return 'Kovan Testnet';
-            case 1337: return 'Localhost';
-            case 5777: return 'Ganache';
-            case 10: return 'Bitcoin Mainnet';
-            case 11: return 'Bitcoin Testnet';
-            default: return 'Unknown Network';
-        }
-    };
-
-    useEffect(() => {
-        const getAccount = async () => {
-            if (checkMetaMask()) {
-                const accounts = await web3.eth.getAccounts();
-                if (accounts.length > 0) {
-                    setAccount(accounts[0]);
-                    const networkId = await web3.eth.net.getId();
-                    setNetwork(getNetworkName(networkId));
-                }
-            }
-        };
-        getAccount();
-    }, []);
 
     const disconnectMetaMask = () => {
         setAccount('');
