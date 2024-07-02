@@ -1,7 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { web3, simpleMarketplaceContract } from '../../../utils/web3';
 
 export default function Catalog({ items }) {
+
+    const handlePurchase = async(itemId, price) => {
+        console.log("handle", itemId, price);
+
+        simpleMarketplaceContract.methods.purchaseItem(itemId).send({from: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266', value: 2000000000000000000})
+        .then(function(receipt){
+            console.log(receipt);
+        });
+    };
+
     return (
         <section className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <div className="mb-8 text-center">
@@ -41,7 +52,8 @@ export default function Catalog({ items }) {
 
                             {/* Dodani stilovi za gumb Purchase */}
                             <div className="absolute bottom-2 right-2 mt-2 mr-2">
-                                <button className="bg-custom-blue-400 text-white px-4 py-2 rounded-md hover:bg-custom-blue-300">
+                                <button onClick={() => handlePurchase(item.id, item.price)} 
+                                className="bg-custom-blue-400 text-white px-4 py-2 rounded-md hover:bg-custom-blue-300">
                                     Purchase
                                 </button>
                             </div>

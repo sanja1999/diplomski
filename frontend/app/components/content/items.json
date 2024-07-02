@@ -1,6 +1,6 @@
 [
     {
-        "id": "1410474",
+        "id": "1",
         "type": "Laptop",
         "title": "Dell XPS 13 - Ultimate Laptop for Professionals",
         "description": "Discover the power and performance of Dell XPS 13, perfect for professional use with top-notch features and sleek design.",
@@ -17,7 +17,7 @@
          "price": "4"
     },
     {
-        "id": "1331625",
+        "id": "2",
         "type": "Smartphone",
         "title": "Samsung Galaxy S25 - Next-Gen Smartphone",
         "description": "Experience the future of smartphones with Samsung Galaxy S25, featuring a powerful processor, stunning display, and advanced camera.",
@@ -34,7 +34,7 @@
          "price": "4"
     },
     {
-        "id": "1112431",
+        "id": "3",
         "type": "Laptop",
         "title": "Apple MacBook Pro 16 - Ultimate Creative Machine",
         "description": "Unleash your creativity with the Apple MacBook Pro 16, offering unmatched performance, stunning Retina display, and advanced graphics.",
@@ -51,7 +51,7 @@
          "price": "4"
     },
     {
-        "id": "985237",
+        "id": "4",
         "type": "Smartphone",
         "title": "Google Pixel 6 - The Smartest Smartphone",
         "description": "Explore the new Google Pixel 6 with Tensor chip, providing smart AI features, excellent camera performance, and smooth user experience.",
