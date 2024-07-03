@@ -38,6 +38,7 @@ export const useAccount = () => {
                 setBalance(web3.utils.fromWei(balanceInWei, 'ether'));
                 setNetwork(getNetworkName(Number(networkId)));
                 setIsLoggedIn(true); // Korisnik je prijavljen
+
             } else {
                 setIsLoggedIn(false); // Korisnik nije prijavljen
                 router.push('/');
@@ -53,5 +54,5 @@ export const useAccount = () => {
         getAccountDetails();
     }, [router]);
 
-    return { account, balance, network, isLoggedIn, getAccountDetails };
+    return { account, setAccount, balance, network, setNetwork, isLoggedIn, getAccountDetails };
 };
