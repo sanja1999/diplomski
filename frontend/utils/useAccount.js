@@ -6,49 +6,41 @@ export const useAccount = () => {
     const [account, setAccount] = useState('');
     const [balance, setBalance] = useState('');
     const [network, setNetwork] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // New state for login status
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Novo stanje za status prijave
     const router = useRouter();
 
+    // Funkcija za dohvaćanje imena mreže prema ID-u mreže
     const getNetworkName = (networkId) => {
-        switch (networkId) {
-            case 1: return 'Ethereum Mainnet';
-            case 3: return 'Ropsten Testnet';
-            case 4: return 'Rinkeby Testnet';
-            case 5: return 'Goerli Testnet';
-            case 42: return 'Kovan Testnet';
-            case 31337: return 'Hardhat Localhost';
-            case 5777: return 'Ganache';
-            case 10: return 'Optimistic Ethereum';
-            case 11: return 'Optimistic Kovan';
-            default: return `Unknown Network (${networkId})`;
-        }
+        const networkNames = {
+            1: 'Ethereum Mainnet',
+            3: 'Ropsten Testnet',
+            4: 'Rinkeby Testnet',
+            5: 'Goerli Testnet',
+            42: 'Kovan Testnet',
+            31337: 'Hardhat Localhost',
+            5777: 'Ganache',
+            10: 'Optimistic Ethereum',
+            11: 'Optimistic Kovan'
+        };
+        return networkNames[networkId] || `Unknown Network (${networkId})`;
     };
 
+    // Funkcija za dohvaćanje detalja o računu
     const getAccountDetails = async () => {
         try {
-            if (typeof window.ethereum !== 'undefined') {
-                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                if (accounts.length > 0) {
-                    setAccount(accounts[0]);
-                    setIsLoggedIn(true); // User is logged in
-                    const balance = await web3.eth.getBalance(accounts[0]);
-                    setBalance(web3.utils.fromWei(balance, 'ether'));
-                    const networkId = await web3.eth.net.getId();
-                    setNetwork(getNetworkName(Number(networkId)));
-                }
+            const accounts = await window.ethereum?.request({ method: 'eth_requestAccounts' }) ?? await web3.eth.getAccounts();
+            if (accounts.length > 0) {
+                const account = accounts[0];
+                const balanceInWei = await web3.eth.getBalance(account);
+                const networkId = await web3.eth.net.getId();
+
+                setAccount(account);
+                setBalance(web3.utils.fromWei(balanceInWei, 'ether'));
+                setNetwork(getNetworkName(Number(networkId)));
+                setIsLoggedIn(true); // Korisnik je prijavljen
             } else {
-                const accounts = await web3.eth.getAccounts();
-                if (accounts.length > 0) {
-                    setAccount(accounts[0]);
-                    setIsLoggedIn(true); // User is logged in
-                    const balance = await web3.eth.getBalance(accounts[0]);
-                    setBalance(web3.utils.fromWei(balance, 'ether'));
-                    const networkId = await web3.eth.net.getId();
-                    setNetwork(getNetworkName(Number(networkId)));
-                } else {
-                    setIsLoggedIn(false); // User is not logged in
-                    router.push('/');
-                }
+                setIsLoggedIn(false); // Korisnik nije prijavljen
+                router.push('/');
             }
         } catch (error) {
             console.error("Error getting account details:", error);
@@ -56,6 +48,7 @@ export const useAccount = () => {
         }
     };
 
+    // Korištenje useEffect za dohvaćanje detalja o računu prilikom promjene router-a
     useEffect(() => {
         getAccountDetails();
     }, [router]);

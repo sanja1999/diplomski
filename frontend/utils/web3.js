@@ -4,34 +4,34 @@ import simpleMarketplaceArtifact from '../../ignition/deployments/chain-31337/ar
 let web3;
 let simpleMarketplaceContract;
 
-// Postavite statičku adresu ugovora
-const contractAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3';
+// Postavljanje statičke adrese ugovora
+const contractAddress = '0xe7f1725e7734ce288f8367e1bb143e90bb3f0512';
 const contractABI = simpleMarketplaceArtifact.abi;
 
 if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {
-  // Nalazimo se u pregledniku i MetaMask je pokrenut.
+  // Provjera okruženja preglednika i pokretanja MetaMask-a
   web3 = new Web3(window.ethereum);
-  // Zatražite pristup korisnikovom MetaMask računu.
+  // Zahtjev za pristup MetaMask računu korisnika
   window.ethereum.request({ method: 'eth_requestAccounts' }).then(() => {
     simpleMarketplaceContract = new web3.eth.Contract(contractABI, contractAddress);
-    console.log(`Contract instance created: ${contractAddress}`);
 
-    // Dohvatite broj stavki kao provjeru
-    simpleMarketplaceContract.methods.itemCount().call().then(itemCount => {
-      console.log(`Item Count from contract: ${itemCount}`);
-    }).catch(err => console.error('Error fetching item count:', err));
-  }).catch(err => console.error(err));
+    // Dohvaćanje broja stavki kao provjera
+    simpleMarketplaceContract.methods.itemCount().call().catch(err => {
+      alert('Error fetching item count: ' + err.message);
+    });
+  }).catch(err => {
+    alert('Error requesting MetaMask accounts: ' + err.message);
+  });
 } else {
-  // Nalazimo se na poslužitelju *ILI* korisnik ne koristi MetaMask
+  // Postavljanje na poslužitelju
   const provider = new Web3.providers.HttpProvider('http://127.0.0.1:8545'); // Hardhat
   web3 = new Web3(provider);
   simpleMarketplaceContract = new web3.eth.Contract(contractABI, contractAddress);
-  console.log(`Contract instance created: ${contractAddress}`);
 
-  // Dohvatite broj stavki kao provjeru
-  simpleMarketplaceContract.methods.itemCount().call().then(itemCount => {
-    console.log(`Item Count from contract: ${itemCount}`);
-  }).catch(err => console.error('Error fetching item count:', err));
+  // Dohvaćanje broja stavki kao provjera
+  simpleMarketplaceContract.methods.itemCount().call().catch(err => {
+    alert('Error fetching item count: ' + err.message);
+  });
 }
 
 export { web3, simpleMarketplaceContract };
