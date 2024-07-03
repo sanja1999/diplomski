@@ -14,7 +14,7 @@ contract SimpleMarketplace {
     event ItemPurchased(uint indexed id, address indexed buyer, uint256 price);
 
     constructor() {
-        // Hardcoded items from items.json
+        // Konstruktor koji hardcodira artikle iz items.json
         listItem(1, 2 ether);         // Dell XPS 13
         listItem(2, 4 ether);         // Samsung Galaxy S25
         listItem(3, 7 ether);         // Apple MacBook Pro 16
@@ -39,7 +39,7 @@ contract SimpleMarketplace {
         require(item.seller != address(0), "Item does not exist");
         require(item.price == msg.value, "Incorrect price sent");
 
-        // Transfer funds to the seller
+        // Transfer sredstava prodavatelju
         (bool success, ) = item.seller.call{value: msg.value}("");
         require(success, "Transfer to seller failed.");
 
