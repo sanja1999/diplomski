@@ -26,15 +26,18 @@ const Item = ({ item }) => {
             />
             <p className="text-lg text-gray-700 mb-4">{item.description}</p>
             <p className="text-2xl font-bold text-custom-blue-500 mb-4">Price: {item.price} ETH</p>
-            <a href={item.link} className="text-custom-blue-500 hover:underline mb-4 block">Learn more</a>
+            <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-custom-blue-500 hover:underline mb-4 block">
+                Learn more
+            </a>
+
             <h2 className="text-2xl font-bold text-custom-blue-300 mb-2">Advantages</h2>
             <ul className="list-disc pl-5 mb-4">
                 {item.pros.map((pro, index) => (
                     <li key={index} className="text-lg text-gray-700">{pro}</li>
                 ))}
             </ul>
-            <button 
-                onClick={() => handlePurchase(item.id, item.price, account, isLoggedIn)} 
+            <button
+                onClick={() => handlePurchase(item.id, item.price, account, isLoggedIn)}
                 className="absolute bottom-8 right-8 bg-custom-blue-400 text-white px-4 py-2 rounded-md hover:bg-custom-blue-300">
                 Purchase
             </button>
