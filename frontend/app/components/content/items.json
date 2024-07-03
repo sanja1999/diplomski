@@ -5,7 +5,6 @@
         "title": "Dell XPS 13 - Ultimate Laptop for Professionals",
         "description": "Discover the power and performance of Dell XPS 13, perfect for professional use with top-notch features and sleek design.",
         "coverImage": "https://images.unsplash.com/photo-1622286346003-c5c7e63b1088?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "author": "Tech Guru",
         "link": "https://www.dell.com/en-us/shop/dell-laptops/sr/laptops/xps-laptops",
         "slug": "dell-xps-13",
         "pros": [
@@ -13,8 +12,7 @@
             "Unmatched performance for professional tasks",
             "Enhanced security features"
         ],
-        "createdAt": "",
-         "price": "2"
+        "price": "2"
     },
     {
         "id": "2",
@@ -22,7 +20,6 @@
         "title": "Samsung Galaxy S25 - Next-Gen Smartphone",
         "description": "Experience the future of smartphones with Samsung Galaxy S25, featuring a powerful processor, stunning display, and advanced camera.",
         "coverImage": "https://images.unsplash.com/photo-1612442443556-09b5b309e637?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "author": "Tech Expert",
         "link": "https://www.samsung.com/global/galaxy/galaxy-s21/",
         "slug": "samsung-galaxy-s25",
         "pros": [
@@ -30,8 +27,7 @@
             "Advanced triple-camera system",
             "Powerful Exynos 2100 processor"
         ],
-        "createdAt": "",
-         "price": "4"
+        "price": "4"
     },
     {
         "id": "3",
@@ -39,7 +35,6 @@
         "title": "Apple MacBook Pro 16 - Ultimate Creative Machine",
         "description": "Unleash your creativity with the Apple MacBook Pro 16, offering unmatched performance, stunning Retina display, and advanced graphics.",
         "coverImage": "https://images.unsplash.com/photo-1491472253230-a044054ca35f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "author": "Apple Enthusiast",
         "link": "https://www.apple.com/macbook-pro-16/",
         "slug": "macbook-pro-16",
         "pros": [
@@ -47,8 +42,7 @@
             "Advanced thermal design for sustained performance",
             "Powerful M1 Pro or M1 Max chip"
         ],
-        "createdAt": "",
-         "price": "7"
+        "price": "7"
     },
     {
         "id": "4",
@@ -56,7 +50,6 @@
         "title": "Google Pixel 6 - The Smartest Smartphone",
         "description": "Explore the new Google Pixel 6 with Tensor chip, providing smart AI features, excellent camera performance, and smooth user experience.",
         "coverImage": "https://images.unsplash.com/photo-1587840181242-bf05eb933bbc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "author": "Tech Reviewer",
         "link": "https://store.google.com/us/product/pixel_6",
         "slug": "google-pixel-6",
         "pros": [
@@ -64,8 +57,7 @@
             "Exceptional camera quality",
             "Google Tensor chip for smart performance"
         ],
-        "createdAt": "",
-         "price": "5"
+        "price": "5"
     },
     {
         "id": "925927",
@@ -73,7 +65,6 @@
         "title": "Dyson V11 - Advanced Cordless Vacuum",
         "description": "Keep your home spotless with Dyson V11, an advanced cordless vacuum with powerful suction, long battery life, and smart features.",
         "coverImage": "https://images.unsplash.com/photo-1625465193723-f027d8df9a26?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "author": "Home Appliance Guru",
         "link": "https://www.dyson.com/vacuum-cleaners/dyson-v11",
         "slug": "dyson-v11",
         "pros": [
@@ -81,17 +72,14 @@
             "Up to 60 minutes of run time",
             "Powerful suction for deep cleaning"
         ],
-        "createdAt": "",
-         "price": "9"
+        "price": "9"
     },
-    
     {
         "id": "847859",
         "type": "Laptop",
         "title": "HP Spectre x360 - Versatile 2-in-1 Laptop",
         "description": "Discover versatility with HP Spectre x360, a 2-in-1 laptop that combines performance, portability, and flexibility for any task.",
         "coverImage": "https://images.unsplash.com/photo-1583223675798-3dce4ddf071a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "author": "Laptop Enthusiast",
         "link": "https://www.hp.com/us-en/shop/pdp/hp-spectre-x360-laptop-14t-ea000-touch-2w7l0av-1",
         "slug": "hp-spectre-x360",
         "pros": [
@@ -99,8 +87,7 @@
             "Long battery life and fast charging",
             "2-in-1 design for versatility"
         ],
-        "createdAt": "",
-         "price": "8"
+        "price": "8"
     },
     {
         "id": "848148",
@@ -108,7 +95,6 @@
         "title": "Philips Hue - Smart Lighting System",
         "description": "Transform your home with Philips Hue, a smart lighting system that allows you to control and customize your lights with ease.",
         "coverImage": "https://images.unsplash.com/photo-1707718282117-8f5ebb5b8843?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "author": "Smart Home Expert",
         "link": "https://www.philips-hue.com/en-us",
         "slug": "philips-hue",
         "pros": [
@@ -116,8 +102,7 @@
             "Works with Alexa, Google Assistant, and Apple HomeKit",
             "Smart control of your lights"
         ],
-        "createdAt": "",
-         "price": "4"
+        "price": "4"
     },
     {
         "id": "848633",
@@ -125,7 +110,6 @@
         "title": "Nest Thermostat - Smart Home Temperature Control",
         "description": "Save energy and stay comfortable with the Nest Thermostat, which learns your schedule and adjusts the temperature automatically.",
         "coverImage": "https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "author": "Home Automation Enthusiast",
         "link": "https://store.google.com/us/product/nest_thermostat",
         "slug": "nest-thermostat",
         "pros": [
@@ -133,8 +117,6 @@
             "Energy saving features",
             "Smart temperature control"
         ],
-        "createdAt": "",
-         "price": "900000"
-
+        "price": "900000"
     }
 ]
